@@ -8,11 +8,11 @@ import java.util.Scanner;
 
 public class TicTacToe {
 	
-	//static deyer
+	
 	static ArrayList<Integer> playerPositions = new ArrayList<>();
 	static ArrayList<Integer> cpuPositions = new ArrayList<>();
 	
-	//print	method
+
 	public static void printGameBoard(char[][] gameBoard) {
 		for (char[] row : gameBoard) {
 			for (char c : row) {
@@ -21,17 +21,17 @@ public class TicTacToe {
 			System.out.println();
 		}
 	}
-	//yerlesdirme
+	
 	public static void placePiece(char[][] gameBoard, int pos, String user) {
 		
 		char symbol = ' ';
 		
 		if (user.equals("player")) {
 			symbol = 'X';
-			playerPositions.add(pos);  //elave edib o yeri rezerv edir kimi
+			playerPositions.add(pos); 
 		} else if (user.equals("cpu")) {
 			symbol = 'O';
-			cpuPositions.add(pos);      //elave edib o yeri rezerv edir kimi
+			cpuPositions.add(pos);     
 		}
 		
 		switch (pos) {
@@ -66,7 +66,7 @@ public class TicTacToe {
 			break;	
 	}
 }
-	//qazanani gosteren
+	
 	public static String checkWinner() {
 		
 		List topRow = Arrays.asList(1, 2, 3);
@@ -77,7 +77,7 @@ public class TicTacToe {
 		List rightCol = Arrays.asList(3, 6, 9);
 		List cross1 = Arrays.asList(1, 5, 9);
 		List cross2 = Arrays.asList(3, 5, 7);
-		//yuxaridaki winning condileri bir liste add etdik
+	
 		List<List> winning = new ArrayList<List>();
 		winning.add(topRow);
 		winning.add(midRow);
@@ -94,7 +94,7 @@ public class TicTacToe {
 				
 			 else if (cpuPositions.containsAll(l)) 
 				return "Sorry, CPU won :(";
-			 else if (cpuPositions.size() + playerPositions.size() == 9) //bu yerler bitiyini ve hec hece
+			 else if (cpuPositions.size() + playerPositions.size() == 9) 
 				 return "Cat )";           
 			
 		}
@@ -104,7 +104,7 @@ public class TicTacToe {
 	
 
 	
-	//main////////////////////////////////////////
+	//main
 	public static void main(String[] args) {
 		
 		char[][] gameBoard = {{' ', '|', ' ', '|', ' '},
@@ -120,15 +120,15 @@ public class TicTacToe {
 			Scanner scan = new Scanner(System.in);
 			System.out.print("Enter your placement (1-9): ");
 			int playerPos = scan.nextInt();
-			//bir birinin ustune ve yerine dusmesin deye
+			
 			while(playerPositions.contains(playerPos) || cpuPositions.contains(playerPos)) {
 				System.out.println("Positon Taken! Enter a Correct Position");
 				playerPos = scan.nextInt();
 			}
 			
-			placePiece(gameBoard, playerPos, "player");    //X O nu qoyan	
+			placePiece(gameBoard, playerPos, "player");   
 			
-			String result = checkWinner();  //2 defe yazdiq
+			String result = checkWinner();  
 			if (result.length() > 0) {
 				System.out.println(result);
 				break;
@@ -137,8 +137,8 @@ public class TicTacToe {
 			
 			
 			Random rand = new Random();
-			int cpuPos = rand.nextInt(9) + 1;        //1 den 9 a
-			//bir birinin ustune ve yerine dusmesin deye
+			int cpuPos = rand.nextInt(9) + 1;        
+	
 			while(playerPositions.contains(cpuPos) || cpuPositions.contains(cpuPos)) {
 				cpuPos = rand.nextInt(9) + 1;
 			}
@@ -148,18 +148,14 @@ public class TicTacToe {
 			
 			printGameBoard(gameBoard);
 			
-			result = checkWinner();     //2 defe yazdiq hem yuxarida hem asagida
+			result = checkWinner();     
 			if (result.length() > 0) {
 				System.out.println(result);
 				break;
 			}
 
 			
-		}
-		
-			
-		
-		
+		}		
 		
 
 	}
