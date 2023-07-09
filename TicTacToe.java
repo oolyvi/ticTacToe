@@ -102,10 +102,7 @@ public class TicTacToe {
 	}
 	
 	
-
-	
-	//main
-	public static void main(String[] args) {
+		public static void main(String[] args) {
 		
 		char[][] gameBoard = {{' ', '|', ' ', '|', ' '},
 							{'-', '+', '-', '+', '-'},
@@ -153,11 +150,7 @@ public class TicTacToe {
 				System.out.println(result);
 				break;
 			}
-
-			
 		}		
-		
 
 	}
-
 }
